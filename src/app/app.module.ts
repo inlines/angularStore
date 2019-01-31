@@ -28,6 +28,7 @@ import { EntityComponentComponent } from './components/entity-component/entity-c
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot<AppState>({
       departments: departmentsReducer,
@@ -36,9 +37,7 @@ import { EntityComponentComponent } from './components/entity-component/entity-c
     EffectsModule.forRoot([
       EmployeesEffects,
       DepartmentsEffects,
-    ]
-    ),
-    HttpClientModule
+    ]),
   ],
   providers: [
     FormKeyService,

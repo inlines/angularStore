@@ -12,7 +12,6 @@ export class DepartmentsListResponseAction implements Action {
   ) {}
 
   public reduce(this: void, state: DepartmentsState, action: DepartmentsListResponseAction): DepartmentsState {
-    debugger;
     return {
       ...state,
       response: action.payload,

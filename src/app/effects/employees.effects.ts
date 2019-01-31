@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Store } from "@ngrx/store";
 import { AppState } from "../app.state";
 import { of } from 'rxjs';
-import { map, catchError} from 'rxjs/operators';
+import { map, catchError, concatMap} from 'rxjs/operators';
 import { ResponseData } from "../models/response-data.model";
 import { RequestMethod } from "../models/fail.model";
 import { EmployeesListRequestAction } from "../reducers/employees/actions/employees-list-request.action";
@@ -21,7 +21,7 @@ export class EmployeesEffects {
   public requestEmployeesEffect = this.actions
     .pipe(
       ofType<EmployeesListRequestAction>(EmployeesActionTypes.EMPLOYEES_LIST_REQUEST),
-      map(action => {
+      concatMap(action => {
         const endpoint = 'employees';
         const params = this.httpParams.buildParamsEncodeStrings(action.payload);
         return this.http.get<ResponseData<EmployeesGetPayload>>(endpoint, {params})

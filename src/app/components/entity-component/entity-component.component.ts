@@ -21,7 +21,7 @@ export class EntityComponentComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    //this.store.dispatch(new EmployeesListRequestAction({offset:0, top: 10}));
+    this.store.dispatch(new EmployeesListRequestAction({offset:0, top: 10}));
     this.store.dispatch(new DepartmentsListRequestAction());
 
     this.subscriptions.push(

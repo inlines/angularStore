@@ -9,10 +9,10 @@ const interceptors = [];
   EmployeeListInterceptor,
   DepartmentsListInterceptor
 ]
-.forEach(inteceptor => {
+.forEach(interceptor => {
   interceptors.push({
     provide: HTTP_INTERCEPTORS,
-    useClass: interceptors,
+    useClass: interceptor,
     multi: true
   });
 });
