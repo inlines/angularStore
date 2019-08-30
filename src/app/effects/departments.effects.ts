@@ -24,7 +24,7 @@ export class DepartmentsEffects {
         const endpoint = 'departments';
         return this.http.get<ResponseData<DepartmentsGetPayload>>(endpoint)
           .pipe(
-            map(response => new DepartmentsListResponseAction(response.payload)),
+            map(response => {debugger;return new DepartmentsListResponseAction(response.payload)}),
             catchError((error: HttpErrorResponse) => {
               return of(new DepartmentsListFailAction({
                 method: RequestMethod.GET,

@@ -18,9 +18,9 @@ export class DepartmentsMockData {
   })
 
   public getDepartments(): DepartmentsGetPayload {
-    return this.deepCopyService.copy({
+    return {
       list: this.departments,
-      totalCount: 0
-    }) as DepartmentsGetPayload;
+      totalCount: 10
+    } as DepartmentsGetPayload;
   }
 }

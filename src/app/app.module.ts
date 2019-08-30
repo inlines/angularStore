@@ -14,12 +14,15 @@ import { FormKeyService } from './services/fom-key.service';
 import { HttpParamsService } from './services/http-params.service';
 import { ParamsBracketService } from './services/params-bracket.service';
 import { MockLoggerService } from './services/mock-logger.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { interceptors } from './interceptors';
 import { MockRequestGuardService } from './services/mock-request-guard.service';
 import { DepartmentsMockData } from './mock-data/departments-mock-data.service';
 import { EmployeesMockData } from './mock-data/employee-mock-data.service';
 import { EntityComponentComponent } from './components/entity-component/entity-component.component';
+import { MockResponseService } from './services/mock-response.service';
+import { DeepCopyService } from './services/deep-copy.service';
+import { ValueTypeCheckService } from './services/value-type-check.service';
 
 @NgModule({
   declarations: [
@@ -40,11 +43,15 @@ import { EntityComponentComponent } from './components/entity-component/entity-c
     ]),
   ],
   providers: [
+    DeepCopyService,
     FormKeyService,
     HttpParamsService,
     ParamsBracketService,
+    ValueTypeCheckService,
+    ParamsBracketService,
     environment.production ? [] : [
       ...interceptors,
+      MockResponseService,
       MockLoggerService,
       MockRequestGuardService,
       DepartmentsMockData,

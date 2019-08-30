@@ -10,7 +10,7 @@ import { EmployeesMockData } from "../mock-data/employee-mock-data.service";
 @Injectable()
 export class EmployeeListInterceptor implements HttpInterceptor {
   private readonly endpoint = /^employees$/;
-
+  
   constructor(
     private logger: MockLoggerService,
     private requestGuard: MockRequestGuardService,
@@ -22,11 +22,11 @@ export class EmployeeListInterceptor implements HttpInterceptor {
     const isMatch = this.requestGuard.isMatch(request, this.endpoint);
     const isGet = this.requestGuard.isGet(request);
 
-    //if(isMatch && isGet) {
+    if(isMatch && isGet) {
       this.logger.register(request);
       const employeesList = this.mocks.getDepartments();
       return this.response.ok(employeesList);
-    //}
+    }
 
     return next.handle(request);
   }

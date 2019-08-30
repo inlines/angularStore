@@ -19,10 +19,8 @@ export class DepartmentsListInterceptor implements HttpInterceptor {
   ){}
 
   public intercept(request: HttpRequest<null>, next: HttpHandler): Intercept<DepartmentsGetPayload> {
-    console.log('departments interceptor!');
     const isMatch = this.requestGuard.isMatch(request, this.endpoint);
     const isGet = this.requestGuard.isGet(request);
-    debugger;
     if(isMatch && isGet) {
       this.logger.register(request);
       const departmentsList = this.mocks.getDepartments();
